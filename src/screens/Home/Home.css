@@ -1,0 +1,32 @@
+.cards-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.title {
+  width: "100%";
+  text-align: center;
+}
+
+.bnt-install {
+  width: 100px;
+  height: 40px;
+  background-color: #01ab49;
+  border-radius: 5px;
+  border-width: 0px;
+  color: #ffffff;
+}
+
+.bnt-install:active {
+  background-color: #1bc864;
+  border-width: 2px;
+  border-color: #1bc864;
+}
+
+.btn-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
