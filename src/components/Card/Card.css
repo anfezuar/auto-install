@@ -11,8 +11,36 @@
   margin: 10px;
   padding: 10px;
   background-color: #ffffff;
+  position: relative;
 }
 
-.card-container img {
+.button-card {
+  width: 300px;
+  border-width: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 10px;
+  margin: 10px;
+  padding: 10px;
+  background-color: #ffffff;
+  position: relative;
+}
+
+.logo {
   width: 200px;
+}
+
+.check {
+  width: 50px;
+  right: 10px;
+  bottom: 10px;
+  position: absolute;
+}
+
+.select-versions {
+  width: 100px;
+  height: 30px;
+  font-size: 20px;
 }
