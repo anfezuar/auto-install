@@ -15,8 +15,8 @@ function Card({
   return (
     <div className="card-container">
       <button className="button-card" onClick={() => handlePressApp(title)}>
-        <h4>{title}</h4>
         <img src={image} alt={"logo del programa"} className="logo" />
+        <h4>{title}</h4>
         {selected && <img src={check} alt={"check"} className="check" />}
       </button>
       <select className="select-versions">{optionsRender()}</select>

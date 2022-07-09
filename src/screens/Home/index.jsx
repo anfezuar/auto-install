@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 
+// icons extracted from https://icons8.com/
 import Card from "../../components/Card";
-import office from "../../assets/office.png";
-import chrome from "../../assets/chrome.png";
-import winrar from "../../assets/winrar.png";
-import vlc from "../../assets/vlc.png";
+import office from "../../assets/office.svg";
+import chrome from "../../assets/chrome.svg";
+import winrar from "../../assets/winrar.svg";
+import vlc from "../../assets/vlc.svg";
 
 import "./Home.css";
 
@@ -31,8 +32,11 @@ function Home() {
   };
 
   return (
-    <React.Fragment>
+    <div className="autoinstall-container">
       <h1 className="title">AutoInstall</h1>
+      <div className="search-container">
+        <input type="text" className="input-serach" />
+      </div>
       <div className="cards-list">
         {CARDS_CONTENT.map((item, index) => (
           <Card
@@ -47,7 +51,7 @@ function Home() {
       <div className="btn-container">
         <button className="bnt-install">{`Instalar (${appSelected.length})`}</button>
       </div>
-    </React.Fragment>
+    </div>
   );
 }
 
