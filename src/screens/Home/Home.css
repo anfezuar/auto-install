@@ -8,12 +8,13 @@
 .title {
   width: "100%";
   text-align: center;
+  color: #ffffff;
 }
 
 .bnt-install {
   width: 100px;
   height: 40px;
-  background-color: #01ab49;
+  background-color: #6a1ca8;
   border-radius: 5px;
   border-width: 0px;
   color: #ffffff;
@@ -54,6 +55,7 @@
 }
 
 .input-serach {
+  position: relative;
   padding: 5px 10px 5px 10px;
   width: 50%;
   height: 50px;
@@ -71,4 +73,12 @@
 .input-serach:active {
   background-color: #ffffff;
   border-width: 0px;
+}
+
+.icon-search {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  right: 25%;
+  margin-top: 13px;
 }

@@ -2,10 +2,13 @@ import React, { useState } from "react";
 
 // icons extracted from https://icons8.com/
 import Card from "../../components/Card";
+import ChipsContainer from "../../components/ChipsContainer";
 import office from "../../assets/office.svg";
 import chrome from "../../assets/chrome.svg";
 import winrar from "../../assets/winrar.svg";
 import vlc from "../../assets/vlc.svg";
+import adobe from "../../assets/adobe.svg";
+import lup from "../../assets/lup.png";
 
 import "./Home.css";
 
@@ -14,14 +17,30 @@ function Home() {
     {
       title: "Office",
       image: office,
-      versiones: ["2019", "2016", "2013", "2010"],
+      versions: ["2019", "2016", "2013", "2010"],
+      category: "Documentos",
     },
-    { title: "Chrome", image: chrome },
-    { title: "Winrar", image: winrar },
-    { title: "Vlc", image: vlc },
+    { title: "Chrome", image: chrome, category: "Navegadores" },
+    { title: "Winrar", image: winrar, category: "Compresores" },
+    { title: "Vlc", image: vlc, category: "Reproductores" },
+    { title: "Reader", image: adobe, category: "Documentos" },
   ];
 
   const [appSelected, setAppSelected] = useState([]);
+  const [textSearch, setTextSearch] = useState("");
+  const [chipSelected, setChipSelected] = useState("Todos");
+  const handleChangeText = (e) => setTextSearch(e.target.value);
+  const filteredData = () => {
+    if (textSearch !== "") {
+      return CARDS_CONTENT.filter((item) =>
+        item.title.toLowerCase().includes(textSearch.toLowerCase())
+      );
+    }
+    if (chipSelected !== "Todos") {
+      return CARDS_CONTENT.filter((item) => item.category === chipSelected);
+    }
+    return CARDS_CONTENT;
+  };
 
   const handlePressApp = (title) => {
     setAppSelected((prev) =>
@@ -35,10 +54,26 @@ function Home() {
     <div className="autoinstall-container">
       <h1 className="title">AutoInstall</h1>
       <div className="search-container">
-        <input type="text" className="input-serach" />
+        <input
+          type="text"
+          className="input-serach"
+          onChange={handleChangeText}
+        />
+        <img src={lup} alt="buscar" className="icon-search" />
+      </div>
+
+      <ChipsContainer
+        chipSelected={chipSelected}
+        setChipSelected={setChipSelected}
+      />
+      <div className="btn-container">
+        <button
+          className="bnt-install"
+          disabled={appSelected.length < 1}
+        >{`Instalar (${appSelected.length})`}</button>
       </div>
       <div className="cards-list">
-        {CARDS_CONTENT.map((item, index) => (
+        {filteredData().map((item, index) => (
           <Card
             {...item}
             key={index}
@@ -47,9 +82,6 @@ function Home() {
             appSelected={appSelected}
           />
         ))}
-      </div>
-      <div className="btn-container">
-        <button className="bnt-install">{`Instalar (${appSelected.length})`}</button>
       </div>
     </div>
   );

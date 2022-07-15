@@ -8,16 +8,15 @@ function Card({
   image,
   handlePressApp,
   selected = false,
-  versiones = [],
+  versions = [],
 }) {
   const optionsRender = () =>
-    versiones.map((version) => <option value={version}>{version}</option>);
+    versions.map((version) => <option value={version}>{version}</option>);
   return (
-    <div className="card-container">
+    <div className={`card-container ${selected && "card-selected"}`}>
       <button className="button-card" onClick={() => handlePressApp(title)}>
         <img src={image} alt={"logo del programa"} className="logo" />
-        <h4>{title}</h4>
-        {selected && <img src={check} alt={"check"} className="check" />}
+        <span className="title-card">{title}</span>
       </button>
       <select className="select-versions">{optionsRender()}</select>
     </div>
