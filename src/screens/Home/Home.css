@@ -1,8 +1,23 @@
+body {
+  width: 100vw;
+  height: 100vh;
+  background: rgb(20, 60, 36);
+  background: linear-gradient(
+    180deg,
+    rgba(20, 60, 36, 1) 20%,
+    rgba(75, 116, 102, 1) 80%,
+    rgba(101, 122, 96, 1) 100%
+  );
+  background-repeat: no-repeat;
+  overflow-x: hidden;
+}
 .cards-list {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: start;
   flex-wrap: wrap;
+  gap: 1rem;
+  padding-left: 1rem;
 }
 
 .title {
@@ -11,28 +26,37 @@
   color: #ffffff;
 }
 
+.header-container svg {
+  color: gray;
+}
+.header-container button {
+  position: absolute;
+  right: 20px;
+  top: 25px;
+  background-color: transparent;
+  border: none;
+}
+
+.header-container button:hover > svg {
+  color: white;
+}
+
 .bnt-install {
   width: 100px;
   height: 40px;
   background-color: #6a1ca8;
   border-radius: 5px;
-  border-width: 0px;
+  border: none;
   color: #ffffff;
 }
 
 .autoinstall-container {
-  position: absolute;
+  width: 100%;
+}
+
+.top-container {
+  position: sticky;
   top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: rgb(20, 60, 36);
-  background: linear-gradient(
-    180deg,
-    rgba(20, 60, 36, 1) 20%,
-    rgba(75, 116, 102, 1) 80%,
-    rgba(101, 122, 96, 1) 100%
-  );
 }
 
 .bnt-install:active {

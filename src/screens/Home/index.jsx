@@ -9,11 +9,22 @@ import winrar from "../../assets/winrar.svg";
 import vlc from "../../assets/vlc.svg";
 import adobe from "../../assets/adobe.svg";
 import lup from "../../assets/lup.png";
+import { Close } from "../../components/Close";
 
 import "./Home.css";
 
 function Home() {
   const CARDS_CONTENT = [
+    {
+      title: "Office",
+      image: office,
+      versions: ["2019", "2016", "2013", "2010"],
+      category: "Documentos",
+    },
+    { title: "Chrome", image: chrome, category: "Navegadores" },
+    { title: "Winrar", image: winrar, category: "Compresores" },
+    { title: "Vlc", image: vlc, category: "Reproductores" },
+    { title: "Reader", image: adobe, category: "Documentos" },
     {
       title: "Office",
       image: office,
@@ -49,28 +60,55 @@ function Home() {
         : prev.concat(title)
     );
   };
-
+  const handleInstall = () => {
+    /* var child = require("child_process").execFile;
+    var executablePath =
+      "../../../software/compresores/winrar/winrar_setup.exe";
+    child(executablePath, function (err, data) {
+      console.log(err);
+      console.log(data);
+    }); */
+    /* const data = {
+      message: "instalar",
+    };
+    window.electronAPI.installApps(data);
+    console.log("instalación finalizada"); */
+    let shell = new ActiveXObject("WScript.shell");
+    shell.run("winrar_setup.exe", 1, true);
+  };
+  const handleCloseApp = () => {
+    /* app.exit(); */
+  };
   return (
     <div className="autoinstall-container">
-      <h1 className="title">AutoInstall</h1>
-      <div className="search-container">
-        <input
-          type="text"
-          className="input-serach"
-          onChange={handleChangeText}
-        />
-        <img src={lup} alt="buscar" className="icon-search" />
-      </div>
+      <div className="top-container">
+        <div className="header-container">
+          <h1 className="title">AutoInstall</h1>
+          <button onClick={handleCloseApp}>
+            <Close />
+          </button>
+        </div>
 
-      <ChipsContainer
-        chipSelected={chipSelected}
-        setChipSelected={setChipSelected}
-      />
-      <div className="btn-container">
-        <button
-          className="bnt-install"
-          disabled={appSelected.length < 1}
-        >{`Instalar (${appSelected.length})`}</button>
+        <div className="search-container">
+          <input
+            type="text"
+            className="input-serach"
+            onChange={handleChangeText}
+          />
+          <img src={lup} alt="buscar" className="icon-search" />
+        </div>
+
+        <ChipsContainer
+          chipSelected={chipSelected}
+          setChipSelected={setChipSelected}
+        />
+        <div className="btn-container">
+          <button
+            onClick={handleInstall}
+            className="bnt-install"
+            disabled={appSelected.length < 1}
+          >{`Instalar (${appSelected.length})`}</button>
+        </div>
       </div>
       <div className="cards-list">
         {filteredData().map((item, index) => (
